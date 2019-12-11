@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { ENV } from '../enums/env.enum';
 
 
 @Component({
@@ -10,6 +11,8 @@ import axios from 'axios';
 export class LoginComponent implements OnInit {
   email: String;
   password: String;
+  jwt: String;
+  
 
   constructor() { }
 
@@ -25,23 +28,25 @@ export class LoginComponent implements OnInit {
   }
 
 onUserSubmit() {
-
 // Request API.
 axios
   .post('http://localhost:1337/auth/local', {
-    identifier: 'user@strapi.io',
-    password: 'strapiPassword',
+    identifier: this.email,
+    password: this.password,
   })
   .then(response => {
     // Handle success.
-    console.log('Well done!');
-    console.log('User profile', response.data.user);
-    console.log('User token', response.data.jwt);
+    // console.log('Well done!');
+    // console.log('User profile', response.data.user);
+    // console.log('User token', response.data.jwt);
+    localStorage.setItem('token', response.data.jwt);
   })
   .catch(error => {
     // Handle error.
     console.log('An error occurred:', error);
   });
+
+
 }
 
 }
