@@ -1,0 +1,20 @@
+
+<div class="card">
+    <h4 class="card-header text-center font-weight-bold py-4">Customers</h4>
+<table class="table table-sm table-hover table-secondary">
+    <thead class="thead-dark">
+        <tr>            
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Company</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers">
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.address }}</td>
+            <td>{{ customer.company }}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

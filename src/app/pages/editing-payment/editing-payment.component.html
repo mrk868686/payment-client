@@ -1,0 +1,48 @@
+<!-- <h1 *ngIf="payments">Edit Payments</h1>
+<hr> -->
+
+<div class="card">
+  <h4 class="card-header text-center font-weight-bold py-4">Edit Payments</h4>
+  <div id="table">
+<table class="table table-bordered table-responsive-md table-hover text-center" *ngIf="payments">
+    <thead class="thead-dark">
+        <tr>            
+            <th scope="col">Name</th>
+            <th scope="col">Value</th>
+            <th scope="col">Type</th>
+            <th scope="col">Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let payment of payments; let i = index" (click)="rowSelected($event, payment)" [class.highlighted]="payment.id === selectedRowId">
+            <td>{{ payment.name }}</td>
+            <td>{{ payment.value }}</td>
+            <td>{{ payment.type }}</td>
+            <td>{{ payment.id }}</td>
+        </tr>
+    </tbody>
+</table>
+<small *ngIf="payments">* select payment before change values</small>
+</div>
+</div>
+
+
+
+  <div class="form-style-5">
+    <form [formGroup]="paymentChange">
+    <fieldset>
+    <legend><span class="number"></span> Edit Payment </legend>
+    <span>name</span>
+    <input type="text" name="field1" placeholder="{{ selectedRow.name }}" class="form-control" formControlName="name">
+    <span>value</span>
+    <input type="text" name="field2" placeholder="{{ selectedRow.value }}"  class="form-control" formControlName="value">
+    <span>type</span>
+    <input type="text" name="field2" placeholder="{{ selectedRow.type }}"  class="form-control" formControlName="type">
+    <span>id *</span>
+    <input type="text" name="field2" placeholder="{{ selectedRow.id }}"  class="form-control" formControlName="id" readonly>
+    </fieldset>
+    
+    <input type="submit" value="Apply Changes" (click)="onSubmit(); onChangeValues()" />
+    
+    </form>
+    </div>

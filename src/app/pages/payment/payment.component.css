@@ -1,0 +1,12 @@
+h1 {
+    color: antiquewhite;
+}
+
+
+.highlighted {
+    background-color: rgb(226, 152, 41);
+}
+
+.card {
+    margin: 10% 10%;
+}

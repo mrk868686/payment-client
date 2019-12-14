@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth/auth.service';
+// import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,11 @@ import { AuthService } from './auth/auth.service';
 })
 export class AppComponent {
   title = 'payment-client';
+  token = localStorage.getItem('token');
 
-  constructor(private auth: AuthService) {}
+  // constructor(private auth: AuthService) {}
 
-  isAuthenticated() {
-    return this.auth.isAuthenticated();
-  }
+  // isAuthenticated() {
+  //   return this.auth.isAuthenticated();
+  // }
 }

@@ -1,4 +1,4 @@
-export interface Payments {
+export interface Payment {
     name: String;
     value: number;
     type: number;
