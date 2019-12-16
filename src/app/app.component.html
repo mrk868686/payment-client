@@ -4,8 +4,7 @@
     <a class="nav-link" routerLink="/payments">Payments</a>
     <a class="nav-link" routerLink="/editing-payment">Edit Payments</a>
     <a class="nav-link" routerLink="/creating-payment">Create Payments</a>
-    <a class="nav-link ml-auto" routerLink="/payments" *ngIf="!token">Log In</a>
-    <a class="nav-link ml-auto" routerLink="/login" *ngIf="token">Log Out</a>
+    <a class="nav-link ml-auto" routerLink="/login" *ngIf="token" (click)="loggedOut()">Log Out</a>
     
   </nav>
 <router-outlet></router-outlet>

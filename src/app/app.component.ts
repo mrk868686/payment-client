@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth/auth.service';
 // import { AuthService } from './auth/auth.service';
 
 @Component({
@@ -10,9 +11,13 @@ export class AppComponent {
   title = 'payment-client';
   token = localStorage.getItem('token');
 
-  // constructor(private auth: AuthService) {}
+  constructor( private authService: AuthService) {
 
-  // isAuthenticated() {
-  //   return this.auth.isAuthenticated();
-  // }
+  }
+
+  loggedOut() {
+    this.authService.logout();
+    window.location.reload();
+  }
+
 }

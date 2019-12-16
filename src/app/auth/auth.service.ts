@@ -1,28 +1,44 @@
-import { Injectable } from '@angular/core';
-
-import { Observable, of } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
+import { Injectable, OnInit } from '@angular/core';
 import axios from 'axios';
 
-
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class AuthService {
-   isLoggedIn = false;
-   token = localStorage.getItem('token');
-
+export class AuthService implements OnInit{
    // store the URL so we can redirect after logging in
-   redirectUrl: string;
+  redirectUrl: string = 'http://localhost:4200/home';
+  authToken = localStorage.getItem('token');
 
-  login() {
-    if (this.token) {
-      this.isLoggedIn = true;
-    }
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+
+  getAuthToken() {
+    return this.authToken;
+}
+
+login(email: string, password: string) {
+  // Request API.
+  axios
+    .post('http://localhost:1337/auth/local', {
+      identifier: email,
+      password: password,
+    })
+    .then(response => {
+      localStorage.setItem('token', response.data.jwt);
+      this.authToken = localStorage.getItem('token');
+    })
+    .catch(error => {
+      // Handle error.
+      console.log('An error occurred:', error);
+    });
   }
 
   logout() {
-    this.isLoggedIn = false;
     localStorage.clear();
   }
+
+
 }

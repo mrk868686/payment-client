@@ -1,4 +1,8 @@
 
+    
+    <!-- <div class="wrapper"> -->
+    <!-- <div style="background-image: url('./assets/img/federico-beccari.jpg'); background-size: cover; height: 100%;"> -->
+      <div class="container">
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <!-- Tabs Titles -->
@@ -11,7 +15,7 @@
         <form>
           <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" (keyup)="onKeyEmail($event)">
           <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" (keyup)="onKeyPass($event)">
-          <input type="submit" class="fadeIn fourth" value="Log In" (click)="onUserSubmit()">
+          <input type="submit" class="fadeIn fourth" value="Log In" (click)="onUserSubmit()" href="['/home']">
         </form>
     
         <!-- Remind Passowrd -->
@@ -21,5 +25,6 @@
     
       </div>
     </div>
-
-    <button class="btn btn-success" (click)="isAuth()"></button>
+  </div>
+<!-- </div> -->
+<!-- </div> -->
