@@ -1,8 +1,6 @@
 
     
-    <!-- <div class="wrapper"> -->
-    <!-- <div style="background-image: url('./assets/img/federico-beccari.jpg'); background-size: cover; height: 100%;"> -->
-      <div class="container">
+  <div class="container">
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <!-- Tabs Titles -->
@@ -12,19 +10,21 @@
        
     
         <!-- Login Form -->
-        <form>
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" (keyup)="onKeyEmail($event)">
-          <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" (keyup)="onKeyPass($event)">
-          <input type="submit" class="fadeIn fourth" value="Log In" (click)="onUserSubmit()" href="['/home']">
+        <form >
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" [formControl]="login">
+          <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" [formControl]="password">
+          <div class="alert alert-danger" *ngIf="error"> 
+            <p>{{ error }}</p>
+          </div>
+          <input type="submit" class="fadeIn fourth" value="Log In" (click)="onUserSubmit()">
         </form>
     
         <!-- Remind Passowrd -->
         <div id="formFooter">
-          <a class="underlineHover" href="#">Forgot Password?</a>
+          <!-- <a class="underlineHover" href="#">Forgot Password?</a> -->
         </div>
     
       </div>
     </div>
   </div>
-<!-- </div> -->
-<!-- </div> -->
+

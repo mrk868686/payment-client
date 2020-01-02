@@ -1,38 +1,48 @@
 import { Injectable, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 import axios from 'axios';
+import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService implements OnInit{
-   // store the URL so we can redirect after logging in
-  redirectUrl: string = 'http://localhost:4200/home';
-  authToken = localStorage.getItem('token');
-
-  constructor() { }
+  error = new Subject<string>();
+  
+  constructor(private jwtHelper: JwtHelperService, private router: Router) { }
 
   ngOnInit() {
   }
 
-
   getAuthToken() {
-    return this.authToken;
+    return localStorage.getItem('token');
+  }
+
+  isAuthenticated() {
+    const token = this.getAuthToken();
+    return !this.jwtHelper.isTokenExpired(token);
 }
 
-login(email: string, password: string) {
+login(login: FormControl, password: FormControl) {
   // Request API.
-  axios
-    .post('http://localhost:1337/auth/local', {
-      identifier: email,
-      password: password,
+  return axios
+    .post( environment.apiUrl + '/auth/local', {
+      identifier: login,
+      password,
     })
     .then(response => {
       localStorage.setItem('token', response.data.jwt);
-      this.authToken = localStorage.getItem('token');
+      this.router.navigate(['payments']);
+      return response;
     })
     .catch(error => {
       // Handle error.
       console.log('An error occurred:', error);
+      this.error.next(error.message);
     });
   }
 

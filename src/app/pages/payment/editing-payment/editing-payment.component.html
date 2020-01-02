@@ -1,7 +1,4 @@
-<!-- <h1 *ngIf="payments">Edit Payments</h1>
-<hr> -->
-
-<div class="card">
+<!-- <div class="card">
   <h4 class="card-header text-center font-weight-bold py-4">Edit Payments</h4>
   <div id="table">
 <table class="table table-bordered table-responsive-md table-hover text-center" *ngIf="payments">
@@ -24,25 +21,21 @@
 </table>
 <small *ngIf="payments">* select payment before change values</small>
 </div>
-</div>
+</div> -->
 
 
 
   <div class="form-style-5">
     <form [formGroup]="paymentChange">
-    <fieldset>
-    <legend><span class="number"></span> Edit Payment </legend>
-    <span>name</span>
-    <input type="text" name="field1" placeholder="{{ selectedRow.name }}" class="form-control" formControlName="name">
-    <span>value</span>
-    <input type="text" name="field2" placeholder="{{ selectedRow.value }}"  class="form-control" formControlName="value">
-    <span>type</span>
-    <input type="text" name="field2" placeholder="{{ selectedRow.type }}"  class="form-control" formControlName="type">
-    <span>id *</span>
-    <input type="text" name="field2" placeholder="{{ selectedRow.id }}"  class="form-control" formControlName="id" readonly>
-    </fieldset>
-    
-    <input type="submit" value="Apply Changes" (click)="onSubmit(); onChangeValues()" />
-    
+        <fieldset>
+            <legend><span class="number"></span> Edit Payment </legend>
+            <span>name</span>
+            <input type="text" name="name" placeholder="{{ payment.name }}" class="form-control" formControlName="name">
+            <span>value</span>
+            <input type="text" name="value" placeholder="{{ payment.value }}"  class="form-control" formControlName="value">
+            <span>type</span>
+            <input type="text" name="type" placeholder="{{ payment.type }}"  class="form-control" formControlName="type">
+        </fieldset>
+        <input type="submit" value="Apply Changes" (click)="onSubmit()" />
     </form>
-    </div>
+</div>

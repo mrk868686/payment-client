@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PaymentService } from 'src/app/services/payment.service';
 import { Payment } from 'src/app/model/payment.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,11 +11,12 @@ import { Payment } from 'src/app/model/payment.model';
 })
 export class PaymentComponent implements OnInit {
   payments: Payment[];
-  selectedRow;
+  payment: Payment;
+
   
   
 
-  constructor(private paymentService: PaymentService) { }
+  constructor(private paymentService: PaymentService, private router: Router) { }
 
   ngOnInit() {
     this.paymentService.getPaymentsFromAPI()
@@ -26,7 +28,7 @@ export class PaymentComponent implements OnInit {
   //       .subscribe(payments => this.payments = payments);
   // }
 
-  deletePayment(event: any, payment) {
+  deletePayment(event: any, payment: Payment, i: number) {
     // const deletedPayment = payment;
 
     if(window.confirm('Are sure you want to delete this item ?')){
@@ -34,13 +36,14 @@ export class PaymentComponent implements OnInit {
       this.paymentService.deletePaymentinAPI(payment)
           .subscribe();
 
-          this.paymentService.getPaymentsFromAPI()
-              .subscribe(payments => this.payments = payments);
+      this.payments.splice(i, 1);
+      console.log(this.payments);
      }
-
-
   }
 
- 
+  editPayment(payment: Payment) {
+    this.paymentService.changeSelectedPayment(payment);
+    this.router.navigateByUrl('edit-payment');
+  } 
 
 }

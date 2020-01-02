@@ -8,15 +8,16 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class LoggedoutGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): boolean {
     if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['login']);
+      return true;
+    } else {
+      this.router.navigate(['payments']);
       return false;
     }
-    return true;
   }
 
   

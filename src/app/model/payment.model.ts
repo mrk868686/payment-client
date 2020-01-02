@@ -1,5 +1,5 @@
 export interface Payment {
-    name: String;
+    name: string;
     value: number;
     type: number;
 }

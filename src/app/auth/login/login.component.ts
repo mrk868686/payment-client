@@ -1,38 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import axios from 'axios';
+import { Component, OnDestroy } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+
 import { AuthService } from 'src/app/auth/auth.service';
-import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  email: string;
-  password: string;
-  jwt: string;
+export class LoginComponent implements OnDestroy{
+  login = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  password = new FormControl('',[Validators.required, Validators.minLength(5)]);
+  error: string;
+  errorSub: Subscription;
   
- 
+  constructor(private authService: AuthService,) { }
 
-  constructor(private authService: AuthService, private router: Router) { }
-
-  ngOnInit() {
-  }
-
-  onKeyEmail(event: any) {
-    this.email = event.target.value;
-  }
-
-  onKeyPass(event: any) {
-    this.password = event.target.value;
-  }
-
-onUserSubmit() {
-  this.authService.login(this.email, this.password);
-  this.router.navigate(['/home']);
-  window.location.reload();
+  onUserSubmit() {
+    this.authService.login(this.login.value, this.password.value);
+    this.errorSub = this.authService.error.subscribe(errMessage => {
+          this.error = errMessage;
+        });
 }
-
+ 
+ ngOnDestroy() {
+   this.errorSub.unsubscribe();
+ }
 
 }

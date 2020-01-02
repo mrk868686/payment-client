@@ -10,26 +10,25 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./creating-payment.component.css']
 })
 export class CreatingPaymentComponent implements OnInit {
-  paymentForm = new FormGroup({
-    name: new FormControl(''),
-    value: new FormControl(''),
-    type: new FormControl('')
-  });
+  paymentForm: FormGroup;
 
   constructor(private paymentService: PaymentService) {
    }
 
   ngOnInit() {
-  }
-
-  createPayment() {
-    this.paymentService.createPaymentinAPI(this.paymentForm.value)
-        .subscribe();    
+    this.paymentForm = new FormGroup({
+      name: new FormControl(''),
+      value: new FormControl(''),
+      type: new FormControl('')
+    });
   }
 
   onSubmit() {
+    this.paymentService.createPayment(this.paymentForm.value)
+        .subscribe();
     // TODO: Use EventEmitter with form value
     console.warn(this.paymentForm.value);
+    alert('New Payment Created!');
   }
 
 

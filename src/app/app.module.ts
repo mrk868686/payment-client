@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -9,10 +9,11 @@ import { PaymentComponent } from './pages/payment/payment.component';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { CustomerComponent } from './pages/customer/customer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { EditingPaymentComponent } from './pages/editing-payment/editing-payment.component';
+import { EditingPaymentComponent } from './pages/payment/editing-payment/editing-payment.component';
 import { CreatingPaymentComponent } from './pages/creating-payment/creating-payment.component';
 import { AuthService } from './auth/auth.service';
-import { HomeComponent } from './pages/home/home.component';
+import { JwtModule } from '@auth0/angular-jwt';
+
 
 
 
@@ -24,15 +25,21 @@ import { HomeComponent } from './pages/home/home.component';
     PaymentComponent,
     CustomerComponent,
     EditingPaymentComponent,
-    CreatingPaymentComponent,
-    HomeComponent,
+    CreatingPaymentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem("token");
+        }
+      }
+    })
   ],
   providers: [
     AuthService,

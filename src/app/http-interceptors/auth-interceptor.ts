@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private auth: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // Get the auth token from the service.
-    const authToken = this.auth.getAuthToken();
+    const authToken = this.authService.getAuthToken();
 
     const authReq = req.clone({ setHeaders: { Authorization: `Bearer ${authToken}` } });
 
