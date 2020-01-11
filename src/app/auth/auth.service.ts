@@ -1,22 +1,18 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
-import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit{
-  error = new Subject<string>();
+export class AuthService {
+  // error = new Subject<string>();
   
-  constructor(private jwtHelper: JwtHelperService, private router: Router) { }
-
-  ngOnInit() {
-  }
+  constructor(private jwtHelper: JwtHelperService) { }
 
   getAuthToken() {
     return localStorage.getItem('token');
@@ -35,20 +31,16 @@ login(login: FormControl, password: FormControl) {
       password,
     })
     .then(response => {
-      localStorage.setItem('token', response.data.jwt);
-      this.router.navigate(['payments']);
-      return response;
+       localStorage.setItem('token', response.data.jwt);
+       return response;
     })
     .catch(error => {
-      // Handle error.
-      console.log('An error occurred:', error);
-      this.error.next(error.message);
+      return error.response;
     });
   }
 
   logout() {
     localStorage.clear();
   }
-
 
 }

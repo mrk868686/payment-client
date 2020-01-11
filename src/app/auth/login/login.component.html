@@ -3,14 +3,9 @@
   <div class="container">
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <!-- Tabs Titles -->
         <h2 class="active"> Sign In </h2>
-        <!-- <h2 class="inactive underlineHover">Sign Up </h2> -->
-    
-       
-    
-        <!-- Login Form -->
-        <form >
+        <!-- <app-alert [message]="error" *ngIf="error"></app-alert> -->
+        <form #authForm="ngForm">
           <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" [formControl]="login">
           <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" [formControl]="password">
           <div class="alert alert-danger" *ngIf="error"> 
@@ -18,10 +13,7 @@
           </div>
           <input type="submit" class="fadeIn fourth" value="Log In" (click)="onUserSubmit()">
         </form>
-    
-        <!-- Remind Passowrd -->
         <div id="formFooter">
-          <!-- <a class="underlineHover" href="#">Forgot Password?</a> -->
         </div>
     
       </div>

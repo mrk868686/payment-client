@@ -13,9 +13,7 @@ import { EditingPaymentComponent } from './pages/payment/editing-payment/editing
 import { CreatingPaymentComponent } from './pages/creating-payment/creating-payment.component';
 import { AuthService } from './auth/auth.service';
 import { JwtModule } from '@auth0/angular-jwt';
-
-
-
+import { AlertComponent } from './shared/alert/alert/alert.component';
 
 
 @NgModule({
@@ -25,7 +23,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     PaymentComponent,
     CustomerComponent,
     EditingPaymentComponent,
-    CreatingPaymentComponent
+    CreatingPaymentComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
