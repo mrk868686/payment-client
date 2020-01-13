@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  // error = new Subject<string>();
   
   constructor(private jwtHelper: JwtHelperService) { }
 
@@ -30,17 +29,10 @@ login(login: FormControl, password: FormControl) {
       identifier: login,
       password,
     })
-    .then(response => {
-       localStorage.setItem('token', response.data.jwt);
-       return response;
-    })
-    .catch(error => {
-      return error.response;
-    });
   }
 
   logout() {
-    localStorage.clear();
+    localStorage.removeItem('token');
   }
 
 }

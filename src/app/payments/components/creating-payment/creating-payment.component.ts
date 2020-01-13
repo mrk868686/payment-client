@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PaymentService } from 'src/app/services/payment.service';
+import { PaymentService } from 'src/app/shared/services/payment.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 
@@ -25,8 +25,7 @@ export class CreatingPaymentComponent implements OnInit {
 
   onSubmit() {
     this.paymentService.createPayment(this.paymentForm.value)
-        .subscribe();
-    // TODO: Use EventEmitter with form value
+      .subscribe();
     console.warn(this.paymentForm.value);
     alert('New Payment Created!');
   }

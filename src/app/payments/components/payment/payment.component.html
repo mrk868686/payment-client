@@ -7,6 +7,8 @@
             <th scope="col">Name</th>
             <th scope="col">Value</th>
             <th scope="col">Type</th>
+            <th scope="col">Customer</th>
+            <th scope="col">ExpectedAt</th>
             <th scope="col">Edit</th>
             <th scope="col">Remove</th>
         </tr>
@@ -14,10 +16,12 @@
     <tbody>
         <tr *ngFor="let payment of payments; let i = index">
             <td>{{ payment.name }}</td>
-            <td>{{ payment.value }}</td>
+            <td>{{ payment.value | currency  }}</td>
             <td>{{ payment.type }}</td>
-            <td><button type="button" class="btn btn-outline-primary" (click)="editPayment(payment, $event)">Edit</button></td>
-            <td><button type="button" class="btn btn-outline-danger" (click)="deletePayment($event, payment, i)">Delete</button></td>
+            <td><a routerLink="/edit-payment">{{ payment.customers.name }}</a></td>
+            <td>{{ payment.expectedAt | date }}</td>
+            <td><button type="button" class="btn btn-outline-primary" (click)="editPayment(payment)">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger" (click)="deletePayment(payment, i)">Delete</button></td>
         </tr>
     </tbody>
 </table>
