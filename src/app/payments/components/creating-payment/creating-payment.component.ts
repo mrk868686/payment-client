@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PaymentService } from 'src/app/shared/services/payment.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -17,17 +17,18 @@ export class CreatingPaymentComponent implements OnInit {
 
   ngOnInit() {
     this.paymentForm = new FormGroup({
-      name: new FormControl(''),
-      value: new FormControl(''),
-      type: new FormControl('')
+      name: new FormControl('', Validators.required),
+      value: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required)
     });
   }
 
   onSubmit() {
     this.paymentService.createPayment(this.paymentForm.value)
-      .subscribe();
-    console.warn(this.paymentForm.value);
-    alert('New Payment Created!');
+      .subscribe(() => {
+        console.warn(this.paymentForm.value);
+        alert('New Payment Created!');
+      });
   }
 
 

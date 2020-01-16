@@ -1,0 +1,12 @@
+<div class="form-style-5">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+        <fieldset>
+            <legend><span class="number">2</span> Create Customer </legend>
+            <input type="text" name="name" placeholder="Name *" class="form-control" formControlName="name">
+            <input type="text" name="address" placeholder="Address *" class="form-control" formControlName="address">
+            <input type="text" name="company" placeholder="Company *" class="form-control" formControlName="company">
+        </fieldset>
+        <input type="submit" value="Save" />
+    </form>
+</div>
+

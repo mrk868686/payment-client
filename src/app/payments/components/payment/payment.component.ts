@@ -25,16 +25,14 @@ export class PaymentComponent implements OnInit {
   }
 
   deletePayment(payment: Payment, i: number) {
-    if(window.confirm('Are sure you want to delete this item ?')){
+    if(window.confirm('Are sure you want to delete this payment ?')){
       this.paymentService.deletePayment(payment)
-          .subscribe((response) => {
-            this.payments.splice(i, 1);
-          });
+          .subscribe(() => this.payments.splice(i, 1));
      }
   }
 
   editPayment(payment: Payment) {
-    this.router.navigateByUrl(`payments/${payment.id}/edit`);
+    this.paymentService.goToEditPayment(payment);
   } 
 
 }

@@ -6,7 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PaymentComponent } from './payments/components/payment/payment.component';
-import { AuthInterceptor } from './shared/http-interceptors/auth-interceptor';
 import { CustomerComponent } from './customers/components/customers/customer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EditingPaymentComponent } from './payments/components/editing-payment/editing-payment.component';
@@ -14,7 +13,10 @@ import { CreatingPaymentComponent } from './payments/components/creating-payment
 import { AuthService } from './auth/auth.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
-
+import { AuthInterceptor } from './auth/auth-interceptor';
+import { CreatingCustomerComponent } from './customers/components/creating-customer/creating-customer.component';
+import { EditingCustomerComponent } from './customers/components/editing-customer/editing-customer.component';
+import { CustomersPaymentsComponent } from './customers/components/customers-payments/customers-payments.component';
 
 
 @NgModule({
@@ -26,6 +28,9 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     EditingPaymentComponent,
     CreatingPaymentComponent,
     NavbarComponent,
+    CreatingCustomerComponent,
+    EditingCustomerComponent,
+    CustomersPaymentsComponent,
   ],
   imports: [
     BrowserModule,

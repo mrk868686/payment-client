@@ -1,0 +1,30 @@
+<div class="wrapper">
+    <div class="card">
+        <h4 class="card-header text-center font-weight-bold py-4">Customer's payments</h4>
+    <div class="table table-sm table-hover table-secondary">
+        <thead class="thead-dark">
+            <tr>            
+                <th>Name</th>
+                <th>Value</th>
+                <th>Type</th>
+                <th>Customer</th>
+                <th>ExpectedAt</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let payment of payments; let i = index">
+                <td>{{ payment.name }}</td>
+                <td>{{ payment.value }}</td>
+                <td>{{ payment.type }}</td>
+                <td>{{ payment.customers.name }}</td>
+                <td>{{ payment.expectedAt }}</td>
+                <td><button type="button" class="btn btn-outline-primary" (click)="editPayment(payment)">Edit</button></td>
+                <td><button type="button" class="btn btn-outline-danger" (click)="deletePayment(payment, i)">Delete</button></td>
+            </tr>
+        </tbody>
+    </div>
+</div>
+</div>
+

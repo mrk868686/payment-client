@@ -7,13 +7,19 @@
             <th scope="col">Name</th>
             <th scope="col">Address</th>
             <th scope="col">Company</th>
+            <th scope="col">Select</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let customer of customers">
+        <tr *ngFor="let customer of customers; let i = index">
             <td>{{ customer.name }}</td>
             <td>{{ customer.address }}</td>
             <td>{{ customer.company }}</td>
+            <td><button type="button" class="btn btn-outline-success" (click)="selectCustomer(customer)">Select</button></td>
+            <td><button type="button" class="btn btn-outline-primary" (click)="editCustomer(customer)">Edit</button></td>
+            <td><button type="button" class="btn btn-outline-danger" (click)="deleteCustomer(customer, i)">Delete</button></td>
         </tr>
     </tbody>
 </table>

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { PaymentService } from 'src/app/shared/services/payment.service';
 import { Payment } from 'src/app/shared/model/payment.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,12 +19,11 @@ export class EditingPaymentComponent implements OnInit {
 
   constructor( 
     private paymentService: PaymentService, 
-    private activatedRout: ActivatedRoute,
-    private router: Router
+    private activatedRoute: ActivatedRoute
     ) { }
 
   ngOnInit() {
-    this.paymentId = this.activatedRout.snapshot.paramMap.get('id');
+    this.paymentId = this.activatedRoute.snapshot.paramMap.get('id');
 
     this.paymentService.getPayment(this.paymentId)
       .subscribe(payment => {

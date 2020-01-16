@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    margin: 10% 10%;
+}
+
+.table {
+    background-color: lightgray;
+}

@@ -1,14 +1,12 @@
-
 <div class="form-style-5">
     <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
-    <fieldset>
-    <legend><span class="number">1</span> Create Payment </legend>
-    <input type="text" name="name" placeholder="Name *" class="form-control" formControlName="name">
-    <input type="text" name="value" placeholder="Value *" class="form-control" formControlName="value">
-    <input type="text" name="type" placeholder="Type *" class="form-control" formControlName="type">
-    </fieldset>
-    
-    <input type="submit" value="Apply" />
+        <fieldset>
+            <legend><span class="number">1</span> Create Payment </legend>
+            <input type="text" name="name" placeholder="Name *" class="form-control" formControlName="name">
+            <input type="text" name="value" placeholder="Value *" class="form-control" formControlName="value">
+            <input type="text" name="type" placeholder="Type *" class="form-control" formControlName="type">
+        </fieldset>
+        <input type="submit" value="Save" />
     </form>
-    </div>
+</div>
 

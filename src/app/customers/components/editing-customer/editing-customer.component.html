@@ -1,0 +1,14 @@
+<div class="form-style-5">
+    <form [formGroup]="customerChange">
+        <fieldset>
+            <legend><span class="number"></span> Edit Payment </legend>
+            <span>name</span>
+            <input type="text" name="name" class="form-control" formControlName="name">
+            <span>address</span>
+            <input type="text" name="address" class="form-control" formControlName="address">
+            <span>company</span>
+            <input type="text" name="company" class="form-control" formControlName="company">
+        </fieldset>
+        <input type="submit" value="Save" (click)="onSubmit()" />
+    </form>
+</div>

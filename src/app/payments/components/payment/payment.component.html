@@ -1,29 +1,29 @@
 
 <div class="card">
     <h4 class="card-header text-center font-weight-bold py-4">Payments</h4>
-<table class="table table-sm table-hover table-secondary">
-    <thead class="thead-dark">
-        <tr>            
-            <th scope="col">Name</th>
-            <th scope="col">Value</th>
-            <th scope="col">Type</th>
-            <th scope="col">Customer</th>
-            <th scope="col">ExpectedAt</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Remove</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let payment of payments; let i = index">
-            <td>{{ payment.name }}</td>
-            <td>{{ payment.value | currency  }}</td>
-            <td>{{ payment.type }}</td>
-            <td><a routerLink="/edit-payment">{{ payment.customers.name }}</a></td>
-            <td>{{ payment.expectedAt | date }}</td>
-            <td><button type="button" class="btn btn-outline-primary" (click)="editPayment(payment)">Edit</button></td>
-            <td><button type="button" class="btn btn-outline-danger" (click)="deletePayment(payment, i)">Delete</button></td>
-        </tr>
-    </tbody>
-</table>
+    <table class="table table-sm table-hover table-secondary">
+        <thead class="thead-dark">
+            <tr>            
+                <th scope="col">Name</th>
+                <th scope="col">Value</th>
+                <th scope="col">Type</th>
+                <th scope="col">Customer</th>
+                <th scope="col">ExpectedAt</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let payment of payments; let i = index">
+                <td>{{ payment.name }}</td>
+                <td>{{ payment.value | currency  }}</td>
+                <td>{{ payment.type }}</td>
+                <td><a routerLink="/edit-payment">{{ payment.customers.name }}</a></td>
+                <td>{{ payment.expectedAt | date }}</td>
+                <td><button type="button" class="btn btn-outline-primary" (click)="editPayment(payment)">Edit</button></td>
+                <td><button type="button" class="btn btn-outline-danger" (click)="deletePayment(payment, i)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 

@@ -18,21 +18,21 @@ export class CustomerService {
     return this.http.get<Customer[]>(this.customerUrl);
   }
 
-  getCustomer(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.customerUrl);
+  getCustomer(id: string) {
+    return this.http.get<Customer>(this.customerUrl + `/${id}`);
   }
 
-  createCustomer( Customer ) {
-    return this.http.post<Customer>(this.customerUrl, Customer);
+  createCustomer( customer ) {
+    return this.http.post<Customer>(this.customerUrl, customer);
   }
 
-  deleteCustomer( Customer: Customer )  {
-    return this.http.delete<Customer>(this.customerUrl + '/' + Customer.id);
+  deleteCustomer( customer: Customer )  {
+    return this.http.delete<Customer>(this.customerUrl + '/' + customer.id);
   }
   
 
-  editCustomer( Customer: Customer ) {
-    return this.http.put<Customer>(this.customerUrl + Customer.id, Customer);
+  editCustomer( customer: Customer, id: string ) {
+    return this.http.put<Customer>(this.customerUrl + `/${id}`, customer);
   }
 
 }
